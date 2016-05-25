@@ -1,0 +1,5 @@
+---
+# vars file for nfs-client
+web_export: /srv/exports/web
+nfs_server: 10.20.0.17
+local_mount: /var/www/wordpress

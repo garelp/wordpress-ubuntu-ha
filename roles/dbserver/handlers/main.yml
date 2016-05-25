@@ -1,0 +1,5 @@
+---
+# handlers file for dbserver
+- name: restart mysql server
+  service: name=mysql state=restarted
+  sudo: yes

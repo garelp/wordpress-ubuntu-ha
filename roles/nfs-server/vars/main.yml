@@ -1,0 +1,3 @@
+---
+# vars file for nfs-server
+web_export: /srv/exports/web

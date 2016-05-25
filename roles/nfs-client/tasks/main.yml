@@ -1,0 +1,17 @@
+---
+# tasks file for nfs-client
+- name: Update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+  sudo: yes
+
+- name: Install required NFS software
+  apt: name={{ item }} state=present
+  sudo: yes
+  with_items:
+    - nfs-common
+
+- name: create mount point for webdir
+  file: path={{ local_mount }} state=directory mode=0755
+
+- name: mount the nfs Share
+  action: mount name={{ local_mount }} src={{ nfs_server }}:{{ web_export }} fstype=nfs state=mounted

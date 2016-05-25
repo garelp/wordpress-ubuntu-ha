@@ -1,0 +1,10 @@
+- hosts: dbserver
+  roles:
+    - dbserver
+    - nfs-server
+
+- hosts: webserver
+  roles:
+    - webserver
+    - nfs-client
+    - wordpress

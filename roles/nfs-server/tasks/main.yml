@@ -1,0 +1,20 @@
+---
+# tasks file for nfs-server
+- name: Update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+  sudo: yes
+
+- name: Install required NFS software
+  apt: name={{ item }} state=present
+  sudo: yes
+  with_items:
+    - nfs-kernel-server
+    - nfs-common
+
+- name: create exported webdir
+  file: path={{ web_export }} state=directory mode=0755
+
+- name: copy nfs server config files
+  template: src=exports.j2 dest=/etc/exports backup=yes
+  notify:
+    - restart NFS server
