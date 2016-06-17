@@ -37,7 +37,7 @@
       fixed_ips:
         - ip_address: 10.20.0.11
 
-  - name: launch an Web server
+  - name: launch an Web server 1
     ignore_errors: true
     os_server:
        cloud: HH2_ECL
@@ -50,7 +50,7 @@
        nics:
            - port-name: port-web-wordpress-1
 
-  - name: launch an Web server
+  - name: launch an Web server 2
     ignore_errors: true
     os_server:
        cloud: HH2_ECL
