@@ -1,0 +1,90 @@
+- name: Create Wordpress infra
+  hosts: localhost
+  tasks:
+  - name: create port with a fixed ip for web server 1
+    os_port:
+      cloud: HH2_ECL
+      state: present
+      name: port-web-wordpress-1
+      network: fr-internal-net
+      fixed_ips:
+        - ip_address: 10.20.0.15
+
+  - name: create port with a fixed ip for web server 2
+    os_port:
+      cloud: HH2_ECL
+      state: present
+      name: port-web-wordpress-2
+      network: fr-internal-net
+      fixed_ips:
+        - ip_address: 10.20.0.16
+
+  - name: create port with a fixed ip for web server 2
+    os_port:
+      cloud: HH2_ECL
+      state: present
+      name: port-nfs-wordpress
+      network: fr-internal-net
+      fixed_ips:
+        - ip_address: 10.20.0.17
+
+  - name: create port with a fixed ip for DB server
+    os_port:
+      cloud: HH2_ECL
+      state: present
+      name: port-db-wordpress
+      network: fr-internal-net
+      fixed_ips:
+        - ip_address: 10.20.0.11
+
+  - name: launch an Web server
+    ignore_errors: true
+    os_server:
+       cloud: HH2_ECL
+       state: present
+       name: wordpress-web-1
+       image: trusty-server-cloudimg-amd64
+       key_name: key_pedro
+       timeout: 200
+       flavor: 1CPU-4GB
+       nics:
+           - port-name: port-web-wordpress-1
+
+  - name: launch an Web server
+    ignore_errors: true
+    os_server:
+       cloud: HH2_ECL
+       state: present
+       name: wordpress-web-2
+       image: trusty-server-cloudimg-amd64
+       key_name: key_pedro
+       timeout: 200
+       flavor: 1CPU-4GB
+       nics:
+           - port-name: port-web-wordpress-2
+
+  - name: launch a DB server
+    ignore_errors: true
+    os_server:
+       cloud: HH2_ECL
+       state: present
+       name: wordpress-db
+       image: trusty-server-cloudimg-amd64
+       key_name: key_pedro
+       timeout: 200
+       flavor: 1CPU-4GB
+       nics:
+           - port-name: port-db-wordpress
+
+  - name: launch a NFS server
+    ignore_errors: true
+    os_server:
+       cloud: HH2_ECL
+       state: present
+       name: wordpress-nfs
+       image: trusty-server-cloudimg-amd64
+       key_name: key_pedro
+       timeout: 200
+       flavor: 1CPU-4GB
+       nics:
+           - port-name: port-nfs-wordpress
