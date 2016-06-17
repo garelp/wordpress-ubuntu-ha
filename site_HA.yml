@@ -1,0 +1,16 @@
+- hosts: nfsserver
+  roles:
+    - nfs-server
+
+- hosts: dbserver
+  roles:
+    - dbserver
+
+- hosts: webserver
+  roles:
+    - webserver
+    - nfs-client
+
+- hosts: appl
+  roles:
+    - wordpress
