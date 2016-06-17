@@ -1,7 +1,7 @@
 - name: Destroy Wordpress infra
   hosts: localhost
   tasks:
-  - name: launch an Web server 1
+  - name: delete Web server 1
     ignore_errors: true
     os_server:
        cloud: HH2_ECL
@@ -14,7 +14,7 @@
        nics:
            - port-name: port-web-wordpress-1
 
-  - name: launch an Web server 2
+  - name: delete Web server 2
     ignore_errors: true
     os_server:
        cloud: HH2_ECL
@@ -27,7 +27,7 @@
        nics:
            - port-name: port-web-wordpress-2
 
-  - name: launch a DB server
+  - name: delete DB server
     ignore_errors: true
     os_server:
        cloud: HH2_ECL
@@ -40,7 +40,7 @@
        nics:
            - port-name: port-db-wordpress
 
-  - name: launch a NFS server
+  - name: delete NFS server
     ignore_errors: true
     os_server:
        cloud: HH2_ECL
