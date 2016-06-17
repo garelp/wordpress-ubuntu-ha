@@ -1,4 +1,4 @@
-- name: Create Wordpress infra
+- name: Destroy Wordpress infra
   hosts: localhost
   tasks:
   - name: launch an Web server 1
