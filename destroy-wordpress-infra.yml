@@ -1,0 +1,54 @@
+- name: Create Wordpress infra
+  hosts: localhost
+  tasks:
+  - name: launch an Web server 1
+    ignore_errors: true
+    os_server:
+       cloud: HH2_ECL
+       state: absent
+       name: wordpress-web-1
+       image: trusty-server-cloudimg-amd64
+       key_name: key_pedro
+       timeout: 200
+       flavor: 1CPU-4GB
+       nics:
+           - port-name: port-web-wordpress-1
+
+  - name: launch an Web server 2
+    ignore_errors: true
+    os_server:
+       cloud: HH2_ECL
+       state: absent
+       name: wordpress-web-2
+       image: trusty-server-cloudimg-amd64
+       key_name: key_pedro
+       timeout: 200
+       flavor: 1CPU-4GB
+       nics:
+           - port-name: port-web-wordpress-2
+
+  - name: launch a DB server
+    ignore_errors: true
+    os_server:
+       cloud: HH2_ECL
+       state: absent
+       name: wordpress-db
+       image: trusty-server-cloudimg-amd64
+       key_name: key_pedro
+       timeout: 200
+       flavor: 1CPU-4GB
+       nics:
+           - port-name: port-db-wordpress
+
+  - name: launch a NFS server
+    ignore_errors: true
+    os_server:
+       cloud: HH2_ECL
+       state: absent
+       name: wordpress-nfs
+       image: trusty-server-cloudimg-amd64
+       key_name: key_pedro
+       timeout: 200
+       flavor: 1CPU-4GB
+       nics:
+           - port-name: port-nfs-wordpress
