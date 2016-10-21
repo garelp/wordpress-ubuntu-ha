@@ -4,7 +4,7 @@
   - name: delete Web server 1
     ignore_errors: true
     os_server:
-       cloud: HH2_ECL
+       cloud: HH2_NTTE
        state: absent
        name: wordpress-web-1
        image: trusty-server-cloudimg-amd64
@@ -17,7 +17,7 @@
   - name: delete Web server 2
     ignore_errors: true
     os_server:
-       cloud: HH2_ECL
+       cloud: HH2_NTTE
        state: absent
        name: wordpress-web-2
        image: trusty-server-cloudimg-amd64
@@ -30,7 +30,7 @@
   - name: delete DB server
     ignore_errors: true
     os_server:
-       cloud: HH2_ECL
+       cloud: HH2_NTTE
        state: absent
        name: wordpress-db
        image: trusty-server-cloudimg-amd64
@@ -43,7 +43,7 @@
   - name: delete NFS server
     ignore_errors: true
     os_server:
-       cloud: HH2_ECL
+       cloud: HH2_NTTE
        state: absent
        name: wordpress-nfs
        image: trusty-server-cloudimg-amd64

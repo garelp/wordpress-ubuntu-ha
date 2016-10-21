@@ -4,3 +4,5 @@ hosts.ECL
 Vagrantfile
 
 *.retry
+
+roles/.DS_Store
